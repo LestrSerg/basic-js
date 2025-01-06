@@ -13,8 +13,12 @@ const { NotImplementedError } = require('../extensions/index.js');
  */
 function getSeason(dt) {
 
+  if (dt == 'date' || dt == 'Date' ) dt = new Date;
 
 
+
+
+  if (dt == null) return 'Unable to determine the time of year!';
 
   try {
    let d =  dt.getMonth();
@@ -23,7 +27,7 @@ function getSeason(dt) {
       throw new TypeError('Invalid date!');
   }
 
-  if (dt == null || dt == undefined || isNaN(dt.getMinutes())) return 'Unable to determine the time of year!';
+  if (dt == undefined || isNaN(dt.getMinutes())) return 'Unable to determine the time of year!';
 
 
 
@@ -33,7 +37,7 @@ function getSeason(dt) {
     if (dt.getMonth() >= 0 && dt.getMonth() < 2 || dt.getMonth() > 10) {return 'winter'} else
       if (dt.getMonth() >= 2 && dt.getMonth() < 5 ) {return 'spring'} else
         if (dt.getMonth() >= 5 && dt.getMonth() < 8 || dt.getMonth() > 10) {return 'summer'} else
-          if (dt.getMonth() >= 8 && dt.getMonth() < 11) {return 'fall'};
+          if (dt.getMonth() >= 8 && dt.getMonth() < 11) {return 'autumn'};
 
 
 
